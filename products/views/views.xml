@@ -1,0 +1,62 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="courses_list_view">
+      <field name="name">Courses System list</field>
+      <field name="model">courses</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="start_date"/>
+          <field name="end_date"/>
+          <field name="cost"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="courses_system_action_window">
+      <field name="name">Courses</field>
+      <field name="res_model">courses</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="courses_system.action_server">
+      <field name="name">courses_system server</field>
+      <field name="model_id" ref="model_courses_system_courses_system"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+
+    <menuitem name="Courses App" id="courses_app_main_menu"/>
+    <menuitem name="Courses" id="courses_menu" parent="courses_system.courses_app_main_menu"
+              action="courses_system.courses_system_action_window"/>
+
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="courses_system.menu_1" parent="courses_system.menu_root"/>
+    <menuitem name="Menu 2" id="courses_system.menu_2" parent="courses_system.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    
+    <menuitem name="Server to list" id="courses_system" parent="courses_system.menu_2"
+              action="courses_system.action_server"/>
+-->
+  </data>
+</odoo>
